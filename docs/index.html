@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choosing an AI model for ad creative</title>
+<meta name="description" content="A model-agnostic way to choose an AI image or video model for ads: the four axes that actually differ, the switching cost, and a three-prompt test that survives the next release.">
+<style>
+  :root { --bg:#ffffff; --fg:#1b2333; --muted:#5b6578; --accent:#02264F; --rule:#e3e7ee; --code:#f4f6f9; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0d1420; --fg:#e6ebf2; --muted:#9aa5b8; --accent:#8fb4ff; --rule:#243044; --code:#151e2d; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:48px 16px 80px; }
+  h1 { font-size:2rem; line-height:1.2; margin:0 0 8px; }
+  h2 { font-size:1.3rem; margin:2.2em 0 .5em; }
+  .sub { color:var(--muted); margin:0 0 32px; }
+  a { color:var(--accent); }
+  blockquote { margin:1em 0; padding:.2em 1em; border-left:3px solid var(--rule); color:var(--muted); font-style:italic; }
+  table { width:100%; border-collapse:collapse; font-size:15px; margin:1em 0; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; }
+  code { background:var(--code); padding:1px 5px; border-radius:4px; font-size:.92em; }
+  hr { border:0; border-top:1px solid var(--rule); margin:40px 0; }
+  footer { color:var(--muted); font-size:15px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Choosing an AI model for ad creative</h1>
+<p class="sub">A way to pick an image or video model that still works after the next release.</p>
+
+<p>I read 874 lines naming an AI video model across 114 threads from marketers and creators. For every line asking <em>which model should I use?</em> there were thirty-three announcing a new one. Almost everything written about models is release news. Almost none of it helps you decide.</p>
+
+<p>The questions people do ask mostly go unanswered:</p>
+<blockquote>Which is the best AI video generation model?</blockquote>
+<blockquote>Seedance 2.5 vs Seedance 2.0 for AI UGC — who got it better?</blockquote>
+
+<p>"Which is best" has no stable answer, because the field moves faster than any answer lasts. One model line went through several versions inside a single month of these threads. So this guide doesn't rank models. It gives you the axes that matter and a test you can re-run.</p>
+
+<h2>The four axes that actually differ</h2>
+<table>
+  <thead><tr><th>Axis</th><th>What it means</th><th>Matters for ads?</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Fidelity per frame</strong></td><td>How good a single still looks</td><td>Least. Nearly every current model clears the bar, and it's all launch reels show you</td></tr>
+    <tr><td><strong>Consistency across a set</strong></td><td>Same face, product and room across forty clips</td><td><strong>Most.</strong> It decides whether you can run a campaign</td></tr>
+    <tr><td><strong>Physics under motion</strong></td><td>Fast movement, hands, objects interacting</td><td>Situational. Vital for product demos, irrelevant for talking heads</td></tr>
+    <tr><td><strong>Cost per usable output</strong></td><td>Price divided by the share you'd actually run</td><td><strong>Most.</strong> A cheaper model with twice the discard rate isn't cheaper</td></tr>
+  </tbody>
+</table>
+<p>For ad work, choose on consistency and cost per usable output. That's the opposite of how launch posts are ordered.</p>
+
+<h2>The switching cost nobody mentions</h2>
+<p>If your ads depend on a recurring face, the model isn't just a tool. Your ads depend on it. Switch models and the face changes, and any recognition you'd built resets. That recognition is the only part of this that compounds.</p>
+<ul>
+  <li><strong>Stay current:</strong> always use the newest model and accept that the look drifts. Right for volume testing, where every ad stands alone.</li>
+  <li><strong>Pin and hold:</strong> lock one model for the life of a persona. Right for any face people are meant to recognise.</li>
+</ul>
+<p>Most teams are in the second position but behave as if they're in the first, upgrading on release day.</p>
+
+<h2>A test that survives the next release</h2>
+<ol>
+  <li><strong>Write down which axis limits you,</strong> in one sentence.</li>
+  <li><strong>Keep three fixed prompts in a file:</strong> one talking to camera, one product interaction, one that must match a face from an earlier clip.</li>
+  <li><strong>Generate ten of each per model and count the ones you'd actually run.</strong> That discard rate is the number that maps to money.</li>
+  <li><strong>Decide your posture (current or pinned) before you test,</strong> because it changes which result matters.</li>
+  <li><strong>Re-run the test when something ships.</strong> Don't switch on the announcement.</li>
+</ol>
+
+<h2>Current models worth putting through it</h2>
+<p>As of October 2026. Expect this list to go out of date; the test won't.</p>
+<table>
+  <thead><tr><th>Images</th><th>Video</th></tr></thead>
+  <tbody>
+    <tr><td>Nano Banana 2, Nano Banana Pro</td><td>Veo 3.1, Veo 3.1 Fast</td></tr>
+    <tr><td>GPT Image 2</td><td>Seedance 2.0, 2.0 Mini, 2.5</td></tr>
+    <tr><td>Seedream 4.5</td><td>Kling 3.0 Standard, Kling 3.0 Pro</td></tr>
+    <tr><td>Flux.2 Klein, Pro, Max</td><td>Hailuo 3</td></tr>
+  </tbody>
+</table>
+<p>Running the same three prompts across this many models is easiest when they all sit behind one login. I built <a href="https://clear-cortex.com">Clear Cortex</a>, an AI image and video studio for marketing teams, partly for that: every model above in one place, with results landing in one library so you can compare discard rates side by side.</p>
+
+<hr>
+<footer>
+<p>The longer version, with every source quote and the reasoning behind each axis: <a href="https://clear-cortex.com/insights/which-model">which model, and what actually changes when you switch</a>.</p>
+<p>Corrections and additions welcome as <a href="https://github.com/JamesLove1/ai-ad-creative-models/issues">GitHub issues</a>.</p>
+</footer>
+</main>
+</body>
+</html>
