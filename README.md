@@ -2,7 +2,7 @@
 
 A model-agnostic way to pick an AI image or video model for ads, and a three-prompt test you can re-run every time a new model ships.
 
-**Read it:** https://jameslove1.github.io/ai-ad-creative-models/
+**Read it:** https://clear-cortex.github.io/ai-ad-creative-models/
 
 ## The short version
 
